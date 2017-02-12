@@ -22,20 +22,19 @@ class CecAccessory {
 
     // this.name = config.name;
     this.type = config.type;
-    this.name = `${config.name} ${config.type}`;
-    this.id = this.name;
+    this.name = config.name;
     this.address = config.address;
 
-    this.log(`${this.id} created`);
+    this.log(`Initialized`);
   }
 
   identify (callback: () => void) {
-    this.log(`identify ${this.id}`);
+    this.log(`Identify`);
     callback();
   }
 
   getServices () {
-    this.log(`getServices for ${this.name}`);
+    this.log(`Creating accessory service`);
     switch (this.type) {
     case 'power':
       let power = new PowerControl({
@@ -43,7 +42,7 @@ class CecAccessory {
         address: this.address,
         log: this.log
       });
-      let powerService = new Service.Switch(`${this.id}`);
+      let powerService = new Service.Switch(`${this.name}`);
       powerService
         .getCharacteristic(Characteristic.On)
         .on('get', power.getOn.bind(power))
@@ -56,7 +55,7 @@ class CecAccessory {
         address: this.address,
         log: this.log
       });
-      let volumeService = new Service.Switch(`${this.id}`);
+      let volumeService = new Service.Switch(`${this.name}`);
       volumeService
         .getCharacteristic(Characteristic.On)
         .on('get', volume.getOn.bind(volume))
