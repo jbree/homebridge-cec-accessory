@@ -4,12 +4,12 @@
       "accessory": "cec",
       "name": "TV Power",
       "type": "power",
-      "address": 1
+      "address": 0
     },
     {
       "accessory": "cec",
-      "name": "Amp Mute",
-      "type": "mute",
+      "name": "Amp Volume",
+      "type": "volume",
       "address": 5
     }
   ]
