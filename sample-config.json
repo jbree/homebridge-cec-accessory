@@ -1,0 +1,16 @@
+{
+  "accessories": [
+    {
+      "accessory": "cec",
+      "name": "TV Power",
+      "type": "power",
+      "address": 1
+    },
+    {
+      "accessory": "cec",
+      "name": "Amp Mute",
+      "type": "mute",
+      "address": 5
+    }
+  ]
+}
