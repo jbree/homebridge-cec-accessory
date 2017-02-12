@@ -35,13 +35,13 @@ class CecAccessory {
   }
 
   getServices () {
-    this.log('getServices');
-    console.log(this.id);
+    this.log(`getServices for ${this.name}`);
     switch (this.type) {
     case 'power':
       let power = new PowerControl({
         name: this.name,
-        address: this.address
+        address: this.address,
+        log: this.log
       });
       let powerService = new Service.Switch(`${this.id}`);
       powerService
@@ -53,7 +53,8 @@ class CecAccessory {
     case 'volume':
       let volume = new VolumeControl({
         name: this.name,
-        address: this.address
+        address: this.address,
+        log: this.log
       });
       let volumeService = new Service.Switch(`${this.id}`);
       volumeService
