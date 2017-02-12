@@ -10,7 +10,7 @@ Currently `power` and `volume` are the only available controls, and `volume`
 only toggles mute (and probably only works with an attached receiver).
 
 No automatic detection of attached devices is performed. For each device, create
-an entry in your `config.json`'s `accessories[]`.
+an accessory entry in your `config.json`.
 
 Bug reports, feature requests, and pull requests welcome.
 
@@ -30,6 +30,8 @@ to install and run homebridge on Raspberry Pi. Don't give up. Hang in there.
 4. Open an issue if you run into problems.
 
 ## Configuration
+
+Here is a sample of what you might put in your `~/.homebridge/config.json`
 
 ```
 "accessories": [
@@ -56,18 +58,18 @@ and descriptive.
 `"address"` specifies the CEC destination address of the device, represented
 as an integer. Here are the possible devices:
 
-0. TV
-1. Recording 1
-2. Recording 2
-3. Tuner 1
-4. Playback 1
-5. Audio system
-6. Tuner 2
-7. Tuner 3
-8. Playback 2
-9. Recording 3
-10. Tuner 4
-11. Playback 4
+`0`: TV  
+`1`: Recording 1  
+`2`: Recording 2  
+`3`: Tuner 1  
+`4`: Playback 1  
+`5`: Audio system  
+`6`: Tuner 2  
+`7`: Tuner 3  
+`8`: Playback 2  
+`9`: Recording 3  
+`10`: Tuner 4  
+`11`: Playback 4  
 
 ## Additional resources
 
