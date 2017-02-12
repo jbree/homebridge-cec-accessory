@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "alwaysStrict": true,
+        "module": "commonjs",
+        "target": "es5",
+        "noEmitOnError": true,
+        "noImplicitThis": true,
+        "removeComments": true,
+        "outDir": "dist",
+        "declaration": true,
+        "sourceMap": false
+    },
+    "compileOnSave": true
+}

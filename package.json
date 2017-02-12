@@ -1,0 +1,35 @@
+{
+  "name": "homebridge-cec-accessory",
+  "version": "0.1.0",
+  "description": "Homebridge support for CEC devices over HDMI",
+  "homepage": "https://github.com/jbree/homebridge-cec-accessory#readme",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbree/homebridge-cec-accessory.git"
+  },
+  "keywords": [
+    "homebridge-plugin",
+    "hdmi",
+    "cec",
+    "television",
+    "tv"
+  ],
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.2.0"
+  },
+  "scripts": {
+    "prepublish": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joshua Breeden",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^7.0.5",
+    "typescript": "^2.1.6"
+  },
+  "dependencies": {
+    "cec-promise": "0.0.6"
+  }
+}
