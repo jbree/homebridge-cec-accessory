@@ -1,7 +1,7 @@
 let Service, Characteristic;
 import cec = require('cec-promise');
 import PowerControl from './controls/Power';
-import MuteControl from './controls/Mute';
+import VolumeControl from './controls/Volume';
 
 interface ICecAccessoryConfig {
   name: string;
@@ -49,17 +49,18 @@ class CecAccessory {
         .on('get', power.getOn.bind(power))
         .on('set', power.setOn.bind(power));
       return [powerService];
-    case 'mute':
-      let mute = new MuteControl({
+
+    case 'volume':
+      let volume = new VolumeControl({
         name: this.name,
         address: this.address
       });
-      let muteService = new Service.Switch(`${this.id}`);
-      muteService
+      let volumeService = new Service.Switch(`${this.id}`);
+      volumeService
         .getCharacteristic(Characteristic.On)
-        .on('get', mute.getMute.bind(mute))
-        .on('set', mute.setMute.bind(mute));
-      return [muteService];
+        .on('get', volume.getOn.bind(volume))
+        .on('set', volume.setOn.bind(volume));
+      return [volumeService];
 
     default:
       break;

@@ -1,13 +1,25 @@
 const cec = require('cec-promise');
-import Control, {IControlConfig} from './Control';
+import Control, {IControlConfig, IAccessoryCallback} from './Control';
 
-export default class MuteControl extends Control {
+export default class VolumeControl extends Control {
 
   constructor (config: IControlConfig) {
     super(config);
   }
 
-  getMute(callback) {
+  getOn (callback: IAccessoryCallback) {
+    this.getMute((err, mute) => {
+      callback(err, (mute === 1) ? 0 : 1);
+    });
+  }
+
+  setOn (on: number, callback: IAccessoryCallback) {
+    this.setMute((on === 1) ? 0 : 1, (err) => {
+      callback(err);
+    });
+  }
+
+  private getMute (callback: IAccessoryCallback) {
     cec.request(this.addressByte, 'GIVE_AUDIO_STATUS', 'REPORT_AUDIO_STATUS')
     .then((res) => {
       var mute = (0x80 & res.status) === 0 ? 0 : 1;
@@ -20,7 +32,7 @@ export default class MuteControl extends Control {
     });
   }
 
-  setMute(mute, callback) {
+  private setMute (mute: number, callback: IAccessoryCallback) {
     cec.request(this.addressByte, 'GIVE_AUDIO_STATUS', 'REPORT_AUDIO_STATUS')
     .then((res) => {
       var currentMute = (0x80 & res.status) === 0 ? 0 : 1;

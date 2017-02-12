@@ -1,7 +1,11 @@
 export interface IControlConfig {
   name: string;
   address: number;
-}
+};
+
+export interface IAccessoryCallback {
+  (err: Error, value?: number): void;
+};
 
 export default class Control {
 
