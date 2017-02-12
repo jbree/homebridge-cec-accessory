@@ -75,5 +75,5 @@ class CecAccessory {
 export = function (homebridge) {
   Service = homebridge.hap.Service;
   Characteristic = homebridge.hap.Characteristic;
-  homebridge.registerAccessory("homebridge-cec", "Cec", CecAccessory);
+  homebridge.registerAccessory("homebridge-cec", "cec", CecAccessory);
 };
