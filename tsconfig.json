@@ -7,7 +7,6 @@
         "noImplicitThis": true,
         "removeComments": true,
         "outDir": "dist",
-        "declaration": true,
         "sourceMap": false
     },
     "compileOnSave": true
