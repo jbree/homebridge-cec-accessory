@@ -9,10 +9,6 @@ interface ICecAccessoryConfig {
   address: number;
 };
 
-interface IHomebridgeCallback {
-  (error: Error, value?: boolean): void;
-}
-
 class CecAccessory {
   log: (msg:string) => void;
   name: string;
