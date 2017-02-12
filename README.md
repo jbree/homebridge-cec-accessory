@@ -69,7 +69,29 @@ as an integer. Here are the possible devices:
 `8`: Playback 2  
 `9`: Recording 3  
 `10`: Tuner 4  
-`11`: Playback 4  
+`11`: Playback 4
+
+### Finding Your Devices
+
+The best way I've found to find your devices is to use the `cec-client` tool
+which comes as part of the `cec-utils` package.
+
+From the command line:  
+`$ cec-client -d 1`
+
+Once it outputs `waiting for input`, type `scan` and press return. This might
+be slightly confusing, but the number to use for `"address"` is the value
+presented as `device #`, not the decimal separated IP-style address.
+
+## Troubleshooting
+
+Under the covers, `homebridge-cec-accessory` uses the `cec-client` to interface
+with your HDMI device. Stopping and starting repeatedly can cause things to go
+awry. If the plugin reports that `cec-client` never reported ready, try
+restarting.
+
+If you're having trouble doing something with this plugin, verify you can do it
+with `cec-client`. If it can't, neither can we.
 
 ## Additional resources
 
