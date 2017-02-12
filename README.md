@@ -21,12 +21,12 @@ Bug reports, feature requests, and pull requests welcome.
 1. Follow [these instructions](https://github.com/nfarina/homebridge/wiki/Running-HomeBridge-on-a-Raspberry-Pi)
 to install and run homebridge on Raspberry Pi. Don't give up. Hang in there.
 
-2. Install cec-utils using package manager:  
+2. Install cec-utils using package manager:
 ```
 $ apt-get install cec-utils
 ```
 
-3. Install homebridge-platform-cec:  
+3. Install homebridge-platform-cec:
 ```
 $ npm install -g homebridge-cec-accessory
 ```
