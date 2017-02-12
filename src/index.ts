@@ -24,8 +24,6 @@ class CecAccessory {
     this.type = config.type;
     this.name = config.name;
     this.address = config.address;
-
-    this.log(`Initialized`);
   }
 
   identify (callback: () => void) {
