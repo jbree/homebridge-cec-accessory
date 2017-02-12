@@ -23,11 +23,11 @@ export default class VolumeControl extends Control {
     cec.request(this.addressByte, 'GIVE_AUDIO_STATUS', 'REPORT_AUDIO_STATUS')
     .then((res) => {
       var mute = (0x80 & res.status) === 0 ? 0 : 1;
-      console.log(`${this.name} getMute: ${mute}`);
+      this.log(`${this.name} getMute: ${mute}`);
       return callback(null, mute);
     })
-    .catch(function (err) {
-      console.log(err);
+    .catch((err: Error) => {
+      this.log(err);
       return callback(err);
     });
   }
@@ -37,14 +37,14 @@ export default class VolumeControl extends Control {
     .then((res) => {
       var currentMute = (0x80 & res.status) === 0 ? 0 : 1;
       if (currentMute === mute) {
-        console.log(`${this.name} setMute: already ${mute}`);
+        this.log(`${this.name} setMute: already ${mute}`);
       } else {
         cec.send('mute');
-        console.log(`${this.name} setMute: ${currentMute} -> ${mute}`);
+        this.log(`${this.name} setMute: ${currentMute} -> ${mute}`);
       }
       return callback(null);
     })
-    .catch(function (err) {
+    .catch((err: Error) => {
       return callback(err);
     });
   }
