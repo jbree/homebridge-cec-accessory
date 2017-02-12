@@ -1,6 +1,6 @@
 {
   "name": "homebridge-cec-accessory",
-  "version": "0.1.0-0",
+  "version": "0.2.0-0",
   "description": "Homebridge support for CEC devices over HDMI",
   "homepage": "https://github.com/jbree/homebridge-cec-accessory#readme",
   "main": "dist/index.js",
