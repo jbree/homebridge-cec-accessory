@@ -1,5 +1,5 @@
 # homebridge-cec-accessory
-Homebridge support for CEC devices over HDMI
+Homebridge support for home theater devices using CEC over HDMI
 
 ## About
 
