@@ -27,10 +27,10 @@ export default class PowerControl extends Control {
         this.log(err);
         callback(err);
       } else {
-        if (on === isOn) {
+        if (on == isOn) {
           this.log(`${this.name} setOn: already ${on ? 'on' : 'off'}`);
         } else {
-          let newMode = isOn ? 'standby' : 'on';
+          let newMode = on ? 'on' : 'standby';
           this.log(`${this.name} setOn: ${on}`);
           cec.send(`${newMode} ${this.controlNibble}`);
         }
