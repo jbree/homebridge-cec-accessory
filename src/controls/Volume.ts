@@ -35,7 +35,7 @@ export default class VolumeControl extends Control {
   private setMute (mute: number, callback: IAccessoryCallback) {
     cec.request(this.addressByte, 'GIVE_AUDIO_STATUS', 'REPORT_AUDIO_STATUS')
     .then((res) => {
-      var currentMute = (0x80 & res.status) === 0 ? 0 : 1;
+      var currentMute = (0x80 & res.status) == 0 ? 0 : 1;
       if (currentMute == mute) {
         this.log(`setMute: already ${mute}`);
       } else {
