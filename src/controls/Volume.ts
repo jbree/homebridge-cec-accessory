@@ -9,12 +9,12 @@ export default class VolumeControl extends Control {
 
   getOn (callback: IAccessoryCallback) {
     this.getMute((err, mute) => {
-      callback(err, (mute === 1) ? 0 : 1);
+      callback(err, mute ? 0 : 1);
     });
   }
 
   setOn (on: number, callback: IAccessoryCallback) {
-    this.setMute((on === 1) ? 0 : 1, (err) => {
+    this.setMute(on ? 0 : 1, (err) => {
       callback(err);
     });
   }
@@ -22,7 +22,7 @@ export default class VolumeControl extends Control {
   private getMute (callback: IAccessoryCallback) {
     cec.request(this.addressByte, 'GIVE_AUDIO_STATUS', 'REPORT_AUDIO_STATUS')
     .then((res) => {
-      var mute = (0x80 & res.status) === 0 ? 0 : 1;
+      var mute = (0x80 & res.status) ? 1 : 0;
       this.log(`getMute: ${mute}`);
       return callback(null, mute);
     })
@@ -35,7 +35,7 @@ export default class VolumeControl extends Control {
   private setMute (mute: number, callback: IAccessoryCallback) {
     cec.request(this.addressByte, 'GIVE_AUDIO_STATUS', 'REPORT_AUDIO_STATUS')
     .then((res) => {
-      var currentMute = (0x80 & res.status) == 0 ? 0 : 1;
+      var currentMute = (0x80 & res.status) ? 1 : 0;
       if (currentMute == mute) {
         this.log(`setMute: already ${mute}`);
       } else {
