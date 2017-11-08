@@ -36,7 +36,7 @@ export default class VolumeControl extends Control {
     cec.request(this.addressByte, 'GIVE_AUDIO_STATUS', 'REPORT_AUDIO_STATUS')
     .then((res) => {
       var currentMute = (0x80 & res.status) === 0 ? 0 : 1;
-      if (currentMute === mute) {
+      if (currentMute == mute) {
         this.log(`setMute: already ${mute}`);
       } else {
         cec.send('mute');
