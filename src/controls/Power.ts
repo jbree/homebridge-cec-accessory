@@ -11,7 +11,7 @@ export default class PowerControl extends Control {
     this.log(`getOn: ${this.addressByte}`);
     cec.request(this.addressByte, 'GIVE_DEVICE_POWER_STATUS', 'REPORT_POWER_STATUS')
     .then((res) => {
-      var on = (res.status === 0) ? 1 : 0;
+      var on = res.status ? 0 : 1;
       this.log(`${this.name} getOn: ${on}`);
       return callback(null, on);
     })
