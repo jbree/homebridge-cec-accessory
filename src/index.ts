@@ -1,6 +1,6 @@
 let Service, Characteristic;
 import cec = require('cec-promise');
-import PowerControl from './controls/Power';
+import PowerControl, {PowerStatus} from './controls/Power';
 import VolumeControl from './controls/Volume';
 
 interface ICecAccessoryConfig {
@@ -40,11 +40,15 @@ class CecAccessory {
         address: this.address,
         log: this.log
       });
-      let powerService = new Service.Switch(`${this.name}`);
-      powerService
-        .getCharacteristic(Characteristic.On)
+      const powerService = new Service.Switch(`${this.name}`);
+      const characteristic = powerService.getCharacteristic(Characteristic.On);
+      characteristic
         .on('get', power.getOn.bind(power))
-        .on('set', power.setOn.bind(power));
+        .on('set',power.setOn.bind(power));
+        power.onReportStatus((status: PowerStatus) => {
+          characteristic.setValue(status === PowerStatus.On, null, 'internal');
+        });
+
       return [powerService];
 
     case 'volume':

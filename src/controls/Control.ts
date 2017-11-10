@@ -8,6 +8,14 @@ export interface IAccessoryCallback {
   (err: Error, value?: number): void;
 };
 
+export interface IControlReport {
+  tokens: Array<string>;
+  source: string;
+  target: string;
+  opcode: number;
+  args: Array<number>;
+};
+
 export default class Control {
 
   name: string;
