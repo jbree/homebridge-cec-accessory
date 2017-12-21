@@ -7,6 +7,7 @@ interface ICecAccessoryConfig {
   name: string;
   type: string;
   address: number;
+  timeoutFix?: boolean;
 };
 
 class CecAccessory {
@@ -16,6 +17,7 @@ class CecAccessory {
   id: string;
   address: number;
   powerService: any;
+  powerTimeoutFix: boolean;
 
   constructor(log: (msg:string) => void, config: ICecAccessoryConfig) {
     this.log = log;
@@ -24,6 +26,7 @@ class CecAccessory {
     this.type = config.type;
     this.name = config.name;
     this.address = config.address;
+    this.powerTimeoutFix = config.timeoutFix || false;
   }
 
   identify (callback: () => void) {
@@ -38,7 +41,8 @@ class CecAccessory {
       let power = new PowerControl({
         name: this.name,
         address: this.address,
-        log: this.log
+        log: this.log,
+        timeoutFix: this.powerTimeoutFix
       });
       const powerService = new Service.Switch(`${this.name}`);
       const characteristic = powerService.getCharacteristic(Characteristic.On);

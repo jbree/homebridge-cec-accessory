@@ -7,10 +7,17 @@ export enum PowerStatus {
   Unknown = 'unknown',
 };
 
+export interface IPowerControlConfig extends IControlConfig {
+  timeoutFix: boolean;
+}
+
 export default class PowerControl extends Control {
 
-  constructor (config: IControlConfig) {
+  timeoutFix: boolean;
+
+  constructor (config: IPowerControlConfig) {
     super(config);
+    this.timeoutFix = config.timeoutFix;
   }
 
   getOn(callback: (error: Error, value?: number) => void) {
@@ -22,6 +29,10 @@ export default class PowerControl extends Control {
       return callback(null, on);
     })
     .catch((err) => {
+      if (this.timeoutFix) {
+        this.log('No response received, assuming device is off');
+        return callback(null, 0);
+      }
       this.log(err);
       return callback(err);
     });
