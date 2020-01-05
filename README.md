@@ -87,8 +87,14 @@ presented as `device #`, not the decimal separated IP-style address.
 
 Under the covers, `homebridge-cec-accessory` uses the `cec-client` to interface
 with your HDMI device. Stopping and starting repeatedly can cause things to go
-awry. If the plugin reports that `cec-client` never reported ready, try
-restarting.
+awry. 
+
+If the plugin reports that `cec-client` never reported ready, it's possible
+that homebridge is running as a user without access to `/dev/vchiq`. If you're
+running homebridge as a user named `homebridge`, you can grant that access by
+adding the user to the `video` group with: `sudo usermod -a -G video homebridge`
+
+If this happens intermitantly, restarting may also help.
 
 If you're having trouble doing something with this plugin, verify you can do it
 with `cec-client`. If it can't, neither can we.
