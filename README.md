@@ -94,7 +94,7 @@ that homebridge is running as a user without access to `/dev/vchiq`. If you're
 running homebridge as a user named `homebridge`, you can grant that access by
 adding the user to the `video` group with: `sudo usermod -a -G video homebridge`
 
-If this happens intermitantly, restarting may also help.
+If this happens intermittently, restarting may also help.
 
 If you're having trouble doing something with this plugin, verify you can do it
 with `cec-client`. If it can't, neither can we.
